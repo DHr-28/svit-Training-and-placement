@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SvitTrainingPlacementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aptitude_Test">
+          <Key>
+            <PropertyRef Name="Aptitude_Test_id" />
+          </Key>
+          <Property Name="Aptitude_Test_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Branch_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyBranch">
+          <Key>
+            <PropertyRef Name="CompanyBranchId" />
+          </Key>
+          <Property Name="CompanyBranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companycriteria">
+          <Key>
+            <PropertyRef Name="Companycriteriaid" />
+          </Key>
+          <Property Name="Companycriteriaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Min_CGPA" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Min_Spi" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Max_Backlogs" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="std10PR" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="std12PR" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Branchname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteName" Type="varchar" MaxLength="50" />
+          <Property Name="Domain" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Address" Type="varchar" MaxLength="5000" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="IsTrainingProvide" Type="bit" />
+          <Property Name="IsPlacementProvide" Type="bit" />
+        </EntityType>
+        <EntityType Name="coordinator">
+          <Key>
+            <PropertyRef Name="co-ordinatorid" />
+          </Key>
+          <Property Name="co-ordinatorid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="Residency" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Placedstudent">
+          <Key>
+            <PropertyRef Name="intstudentid" />
+          </Key>
+          <Property Name="intstudentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyid" Type="int" Nullable="false" />
+          <Property Name="Branchid" Type="int" Nullable="false" />
+          <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="intStudentId" />
+          </Key>
+          <Property Name="intStudentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="Residency" Type="varchar" MaxLength="50" />
+          <Property Name="CGPA" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem1" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem2" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem3" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem4" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem5" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sem6" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="std10PR" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="std12PR" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="intUserid" />
+          </Key>
+          <Property Name="intUserid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strPassword" Type="nvarchar" MaxLength="200" />
+          <Property Name="strFirstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="strLastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="strEmail" Type="varchar" MaxLength="50" />
+          <Property Name="intGender" Type="int" />
+          <Property Name="strResidency" Type="varchar" MaxLength="200" />
+          <Property Name="intUserType" Type="int" />
+          <Property Name="intCreatedby" Type="int" />
+          <Property Name="datCreateddate" Type="datetime" />
+          <Property Name="intModifiedby" Type="int" />
+          <Property Name="datModifieddate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CompanyBranch_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="CompanyBranch">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyBranch_CompanyInfo">
+          <End Role="CompanyInfo" Type="Self.CompanyInfo" Multiplicity="1" />
+          <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyInfo">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyBranch">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CompanyInfoselectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SvitTrainingPlacementModelStoreContainer">
+          <EntitySet Name="Aptitude_Test" EntityType="Self.Aptitude_Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyBranch" EntityType="Self.CompanyBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companycriteria" EntityType="Self.Companycriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="coordinator" EntityType="Self.coordinator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Placedstudent" EntityType="Self.Placedstudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CompanyBranch_Branch" Association="Self.FK_CompanyBranch_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyBranch_CompanyInfo" Association="Self.FK_CompanyBranch_CompanyInfo">
+            <End Role="CompanyInfo" EntitySet="CompanyInfo" />
+            <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Branch" Association="Self.FK_Student_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SvitTrainingPlacementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CompanyBranches" Relationship="Self.FK_CompanyBranch_Branch" FromRole="Branch" ToRole="CompanyBranch" />
+          <NavigationProperty Name="Students" Relationship="SvitTrainingPlacementModel.FK_Student_Branch" FromRole="Branch" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="CompanyBranch">
+          <Key>
+            <PropertyRef Name="CompanyBranchId" />
+          </Key>
+          <Property Name="CompanyBranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_CompanyBranch_Branch" FromRole="CompanyBranch" ToRole="Branch" />
+          <NavigationProperty Name="CompanyInfo" Relationship="Self.FK_CompanyBranch_CompanyInfo" FromRole="CompanyBranch" ToRole="CompanyInfo" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WebsiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsTrainingProvide" Type="Boolean" />
+          <Property Name="IsPlacementProvide" Type="Boolean" />
+          <NavigationProperty Name="CompanyBranches" Relationship="Self.FK_CompanyBranch_CompanyInfo" FromRole="CompanyInfo" ToRole="CompanyBranch" />
+        </EntityType>
+        <Association Name="FK_CompanyBranch_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="CompanyBranch">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyBranch_CompanyInfo">
+          <End Role="CompanyInfo" Type="Self.CompanyInfo" Multiplicity="1" />
+          <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyInfo">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyBranch">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SvitTrainingPlacementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="CompanyBranches" EntityType="Self.CompanyBranch" />
+          <EntitySet Name="CompanyInfoes" EntityType="Self.CompanyInfo" />
+          <AssociationSet Name="FK_CompanyBranch_Branch" Association="Self.FK_CompanyBranch_Branch">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="CompanyBranch" EntitySet="CompanyBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyBranch_CompanyInfo" Association="Self.FK_CompanyBranch_CompanyInfo">
+            <End Role="CompanyInfo" EntitySet="CompanyInfoes" />
+            <End Role="CompanyBranch" EntitySet="CompanyBranches" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="SvitTrainingPlacementModel.User" />
+          <FunctionImport Name="CompanyInfoselectAll" ReturnType="Collection(SvitTrainingPlacementModel.CompanyInfoselectAll_Result)" />
+          <EntitySet Name="Students" EntityType="SvitTrainingPlacementModel.Student" />
+          <AssociationSet Name="FK_Student_Branch" Association="SvitTrainingPlacementModel.FK_Student_Branch">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <EntitySet Name="coordinators" EntityType="SvitTrainingPlacementModel.coordinator" />
+          <EntitySet Name="Companycriterias" EntityType="SvitTrainingPlacementModel.Companycriteria" />
+          <EntitySet Name="Aptitude_Test" EntityType="SvitTrainingPlacementModel.Aptitude_Test" />
+          <EntitySet Name="Placedstudents" EntityType="SvitTrainingPlacementModel.Placedstudent" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="intUserid" />
+          </Key>
+          <Property Name="intUserid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="strFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="strLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="strEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="intGender" Type="Int32" />
+          <Property Name="strResidency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="intUserType" Type="Int32" />
+          <Property Name="intCreatedby" Type="Int32" />
+          <Property Name="datCreateddate" Type="DateTime" Precision="3" />
+          <Property Name="intModifiedby" Type="Int32" />
+          <Property Name="datModifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="CompanyInfoselectAll_Result">
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="WebsiteName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Domain" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="intStudentId" />
+          </Key>
+          <Property Name="intStudentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Enrollment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="Int64" />
+          <Property Name="Residency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CGPA" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem1" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem2" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem3" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem4" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem5" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="sem6" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Branch" Relationship="SvitTrainingPlacementModel.FK_Student_Branch" FromRole="Student" ToRole="Branch" />
+          <Property Name="std10PR" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="std12PR" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Student_Branch">
+          <End Type="SvitTrainingPlacementModel.Branch" Role="Branch" Multiplicity="1" />
+          <End Type="SvitTrainingPlacementModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="coordinator">
+          <Key>
+            <PropertyRef Name="co_ordinatorid" />
+          </Key>
+          <Property Name="co_ordinatorid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="Int64" />
+          <Property Name="Residency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Companycriteria">
+          <Key>
+            <PropertyRef Name="Companycriteriaid" />
+          </Key>
+          <Property Name="Companycriteriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Min_CGPA" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Min_Spi" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Max_Backlogs" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="std10PR" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="std12PR" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Branchname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Aptitude_Test">
+          <Key>
+            <PropertyRef Name="Aptitude_Test_id" />
+          </Key>
+          <Property Name="Aptitude_Test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Branch_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Placedstudent">
+          <Key>
+            <PropertyRef Name="intstudentid" />
+          </Key>
+          <Property Name="intstudentid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyid" Type="Int32" Nullable="false" />
+          <Property Name="Branchid" Type="Int32" Nullable="false" />
+          <Property Name="Enrollment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SvitTrainingPlacementModelStoreContainer" CdmEntityContainer="SvitTrainingPlacementEntities">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyBranches">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.CompanyBranch">
+              <MappingFragment StoreEntitySet="CompanyBranch">
+                <ScalarProperty Name="CompanyBranchId" ColumnName="CompanyBranchId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfoes">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.CompanyInfo">
+              <MappingFragment StoreEntitySet="CompanyInfo">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IsTrainingProvide" ColumnName="IsTrainingProvide" />
+                <ScalarProperty Name="IsPlacementProvide" ColumnName="IsPlacementProvide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="datModifieddate" ColumnName="datModifieddate" />
+                <ScalarProperty Name="intModifiedby" ColumnName="intModifiedby" />
+                <ScalarProperty Name="datCreateddate" ColumnName="datCreateddate" />
+                <ScalarProperty Name="intCreatedby" ColumnName="intCreatedby" />
+                <ScalarProperty Name="intUserType" ColumnName="intUserType" />
+                <ScalarProperty Name="strResidency" ColumnName="strResidency" />
+                <ScalarProperty Name="intGender" ColumnName="intGender" />
+                <ScalarProperty Name="strEmail" ColumnName="strEmail" />
+                <ScalarProperty Name="strLastname" ColumnName="strLastname" />
+                <ScalarProperty Name="strFirstname" ColumnName="strFirstname" />
+                <ScalarProperty Name="strPassword" ColumnName="strPassword" />
+                <ScalarProperty Name="intUserid" ColumnName="intUserid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CompanyInfoselectAll" FunctionName="SvitTrainingPlacementModel.Store.CompanyInfoselectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SvitTrainingPlacementModel.CompanyInfoselectAll_Result">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="std12PR" ColumnName="std12PR" />
+                <ScalarProperty Name="std10PR" ColumnName="std10PR" />
+                <ScalarProperty Name="sem6" ColumnName="sem6" />
+                <ScalarProperty Name="sem5" ColumnName="sem5" />
+                <ScalarProperty Name="sem4" ColumnName="sem4" />
+                <ScalarProperty Name="sem3" ColumnName="sem3" />
+                <ScalarProperty Name="sem2" ColumnName="sem2" />
+                <ScalarProperty Name="sem1" ColumnName="sem1" />
+                <ScalarProperty Name="CGPA" ColumnName="CGPA" />
+                <ScalarProperty Name="Residency" ColumnName="Residency" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="intStudentId" ColumnName="intStudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="coordinators">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.coordinator">
+              <MappingFragment StoreEntitySet="coordinator">
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="Residency" ColumnName="Residency" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="co_ordinatorid" ColumnName="co-ordinatorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companycriterias">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Companycriteria">
+              <MappingFragment StoreEntitySet="Companycriteria">
+                <ScalarProperty Name="Branchname" ColumnName="Branchname" />
+                <ScalarProperty Name="std12PR" ColumnName="std12PR" />
+                <ScalarProperty Name="std10PR" ColumnName="std10PR" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Max_Backlogs" ColumnName="Max_Backlogs" />
+                <ScalarProperty Name="Min_Spi" ColumnName="Min_Spi" />
+                <ScalarProperty Name="Min_CGPA" ColumnName="Min_CGPA" />
+                <ScalarProperty Name="Companycriteriaid" ColumnName="Companycriteriaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aptitude_Test">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Aptitude_Test">
+              <MappingFragment StoreEntitySet="Aptitude_Test">
+                <ScalarProperty Name="Branch_id" ColumnName="Branch_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Aptitude_Test_id" ColumnName="Aptitude_Test_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Placedstudents">
+            <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Placedstudent">
+              <MappingFragment StoreEntitySet="Placedstudent">
+                <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+                <ScalarProperty Name="Branchid" ColumnName="Branchid" />
+                <ScalarProperty Name="companyid" ColumnName="companyid" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="intstudentid" ColumnName="intstudentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,74 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+@using SvitTrainingAndPlacementSystem.Areas.User.Models;
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+@model Aptitude_TestModel
+
+@{
+    ViewBag.Title = "Aptitude_Test";
+   
+}
+<head>
+    <title></title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div class="container" style="background-color:white;">
+        <h2><center><b>Arrange Aptitude_Test</b></center></h2>
+        @using (Html.BeginForm("Aptitude_Test", "Cod", FormMethod.Post))
+        {
+
+            <table>
+                <tr>
+                    <td colspan="2">
+                        @Html.RenderMessages()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Date:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m=>m.Date, new { @type="date"})
+                        @Html.ValidationMessageFor(m => m.Date)
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>Branch</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.BranchId, Model.branchselectlist)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+
+            </table>
+
+        }
+
+    </div>
+
+</body>
+

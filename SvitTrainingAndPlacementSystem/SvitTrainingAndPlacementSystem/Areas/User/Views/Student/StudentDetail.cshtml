@@ -1,0 +1,133 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+@using SvitTrainingAndPlacementSystem.Areas.User.Models;
+@model Student
+@{
+    ViewBag.Title = "StudentDetail";
+    
+}
+
+
+
+    <html>
+    <head>
+        <title></title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 100%;
+                border: 3px solid #ddd;
+            }
+
+            th, td {
+                border: none;
+                text-align: left;
+                padding: 17px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container" style="background-color:white;">
+            <h2><center>Student Detail</center></h2>
+@using (Html.BeginForm("StudentDetailSubmit", "Student", FormMethod.Post))
+{
+            <table>
+                <tr>
+                    <td colspan="2">
+                        @Html.RenderMessages()
+                    </td>
+                </tr>
+                @Html.HiddenFor(m => m.intStudentId)
+                <tr>
+                    <td>Student Name</td>
+                    <td>@Html.TextBoxFor(m => m.FirstName)</td>
+
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>@Html.TextBoxFor(m => m.LastName)</td>
+                </tr>
+                <tr>
+                    <td>Enrollment</td>
+                    <td>@Html.TextBoxFor(m => m.Enrollment)</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Html.TextBoxFor(m => m.Email)</td>
+                </tr>
+                <tr>
+                    <td>BranchId</td>
+                    <td>@Html.TextBoxFor(m => m.BranchId)</td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>@Html.TextBoxFor(m => m.PhoneNumber)</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>@Html.TextBoxFor(m => m.Residency)</td>
+                </tr>
+
+                <tr>
+                    <td>CGPA</td>
+                    <td>@Html.TextBoxFor(m => m.CGPA)</td>
+                </tr>
+                <tr>
+                    <td>ALL SEM SPI</td>
+
+                </tr>
+                <tr>
+                    <td>SEM 1</td>
+                    <td>@Html.TextBoxFor(m => m.sem1)</td>
+                </tr>
+                <tr>
+                    <td>SEM 2</td>
+
+                    <td>@Html.TextBoxFor(m => m.sem2)</td>
+                </tr>
+                <tr>
+                    <td>SEM 3</td>
+
+                    <td>@Html.TextBoxFor(m => m.sem3)</td>
+                </tr>
+                <tr>
+                    <td>SEM 4</td>
+
+                    <td>@Html.TextBoxFor(m => m.sem4)</td>
+                </tr>
+                <tr>
+                    <td>SEM 5</td>
+
+                    <td>@Html.TextBoxFor(m => m.sem5)</td>
+                </tr>
+                <tr>
+                    <td>SEM 6</td>
+
+                    <td>@Html.TextBoxFor(m => m.sem6)</td>
+                </tr>
+                <tr>
+                    <td>STD 10 PR</td>
+
+                    <td>@Html.TextBoxFor(m => m.std10PR)</td>
+                </tr>
+                <tr>
+                    <td>STD 12 PR</td>
+
+                    <td>@Html.TextBoxFor(m => m.std12PR)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+
+            </table>
+            }
+        </div>
+    </body>
+</html>
+
+
+

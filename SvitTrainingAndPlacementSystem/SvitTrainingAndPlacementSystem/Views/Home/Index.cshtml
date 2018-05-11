@@ -1,0 +1,90 @@
+﻿@model SvitTrainingAndPlacementSystem.Models.LogInModel
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Template/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Template/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/Template/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="~/Template/js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Template/js/bootstrap.min.js"></script>
+
+    <!-- css files -->
+    </head>
+
+<body id="login" >
+    
+    <h1 class="w3ls"></h1>
+    <div class="login-logo">
+        <div class="error-top2">
+            <p><font color="#76EE00" size="7" weight="550"><b>SVIT TRAINING AND PLACEMANT</b></font></p>
+        </div>
+</div>
+    <div class="error-top">
+    
+        <h2 class="form-heading"><p><font color="white" size="5" weight="400"><b>login</b></font></h2>
+
+
+        <div class="app-cam">
+
+            
+
+
+
+                @using (Html.BeginForm("LoginSubmit", "Home", FormMethod.Post, new { id = "frmLogin", defaultbutton = "btnLogin" }))
+
+
+                {
+                    
+                     <font color="White">@Html.LabelFor(m => m.strEmail)</font>
+                    @Html.TextBoxFor(m => m.strEmail, new { id = "txtEmail", @class = "text", @placeholder = "Email Address", @maxlength = "50" })
+                    <span class="msgSpan"><font color="White">@Html.ValidationMessageFor(m => m.strEmail)</font></span>
+
+                        <font color="White">@Html.LabelFor(m => m.strPassword)</font>
+                        @Html.PasswordFor(m => m.strPassword, new { @class = "login-txt", @placeholder = "Enter password", @maxlength = "200" })
+                        <span class="msgSpan"><font color="White">@Html.ValidationMessageFor(m => m.strPassword)</font></span>
+
+
+
+                        <div class="submit"><input type="submit" value="Login"></div>
+                        <ul class="new">
+                            <li class="new_left">
+                                <p>
+
+                                    <a href="/Home/password"><font color="white" size="3" weight="50"><b>Forgot Password ?</b></font></a>
+
+                                </p>
+                            </li>
+                        </ul>
+                   }
+
+
+
+
+
+                        <div class="copy_layout login">
+                            <p><font color="white" size="3" weight="50"><b>Copyright</b></font></p>
+                        </div>
+
+
+
+</div>
+
+
+
+</body>
+</html>

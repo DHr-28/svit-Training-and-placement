@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SvitTrainingPlacementModelStoreContainer" CdmEntityContainer="SvitTrainingPlacementEntities">
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyBranches">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.CompanyBranch">
+        <MappingFragment StoreEntitySet="CompanyBranch">
+          <ScalarProperty Name="CompanyBranchId" ColumnName="CompanyBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyInfoes">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.CompanyInfo">
+        <MappingFragment StoreEntitySet="CompanyInfo">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="IsTrainingProvide" ColumnName="IsTrainingProvide" />
+          <ScalarProperty Name="IsPlacementProvide" ColumnName="IsPlacementProvide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="datModifieddate" ColumnName="datModifieddate" />
+          <ScalarProperty Name="intModifiedby" ColumnName="intModifiedby" />
+          <ScalarProperty Name="datCreateddate" ColumnName="datCreateddate" />
+          <ScalarProperty Name="intCreatedby" ColumnName="intCreatedby" />
+          <ScalarProperty Name="intUserType" ColumnName="intUserType" />
+          <ScalarProperty Name="strResidency" ColumnName="strResidency" />
+          <ScalarProperty Name="intGender" ColumnName="intGender" />
+          <ScalarProperty Name="strEmail" ColumnName="strEmail" />
+          <ScalarProperty Name="strLastname" ColumnName="strLastname" />
+          <ScalarProperty Name="strFirstname" ColumnName="strFirstname" />
+          <ScalarProperty Name="strPassword" ColumnName="strPassword" />
+          <ScalarProperty Name="intUserid" ColumnName="intUserid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CompanyInfoselectAll" FunctionName="SvitTrainingPlacementModel.Store.CompanyInfoselectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SvitTrainingPlacementModel.CompanyInfoselectAll_Result">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="WebsiteName" ColumnName="WebsiteName" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="std12PR" ColumnName="std12PR" />
+          <ScalarProperty Name="std10PR" ColumnName="std10PR" />
+          <ScalarProperty Name="sem6" ColumnName="sem6" />
+          <ScalarProperty Name="sem5" ColumnName="sem5" />
+          <ScalarProperty Name="sem4" ColumnName="sem4" />
+          <ScalarProperty Name="sem3" ColumnName="sem3" />
+          <ScalarProperty Name="sem2" ColumnName="sem2" />
+          <ScalarProperty Name="sem1" ColumnName="sem1" />
+          <ScalarProperty Name="CGPA" ColumnName="CGPA" />
+          <ScalarProperty Name="Residency" ColumnName="Residency" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="intStudentId" ColumnName="intStudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="coordinators">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.coordinator">
+        <MappingFragment StoreEntitySet="coordinator">
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="Residency" ColumnName="Residency" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="co_ordinatorid" ColumnName="co-ordinatorid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companycriterias">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Companycriteria">
+        <MappingFragment StoreEntitySet="Companycriteria">
+          <ScalarProperty Name="Branchname" ColumnName="Branchname" />
+          <ScalarProperty Name="std12PR" ColumnName="std12PR" />
+          <ScalarProperty Name="std10PR" ColumnName="std10PR" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="Max_Backlogs" ColumnName="Max_Backlogs" />
+          <ScalarProperty Name="Min_Spi" ColumnName="Min_Spi" />
+          <ScalarProperty Name="Min_CGPA" ColumnName="Min_CGPA" />
+          <ScalarProperty Name="Companycriteriaid" ColumnName="Companycriteriaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aptitude_Test">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Aptitude_Test">
+        <MappingFragment StoreEntitySet="Aptitude_Test">
+          <ScalarProperty Name="Branch_id" ColumnName="Branch_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Aptitude_Test_id" ColumnName="Aptitude_Test_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Placedstudents">
+      <EntityTypeMapping TypeName="SvitTrainingPlacementModel.Placedstudent">
+        <MappingFragment StoreEntitySet="Placedstudent">
+          <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+          <ScalarProperty Name="Branchid" ColumnName="Branchid" />
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="intstudentid" ColumnName="intstudentid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

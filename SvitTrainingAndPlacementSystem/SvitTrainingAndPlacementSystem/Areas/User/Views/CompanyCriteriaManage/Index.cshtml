@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+
+
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="~/Content/angularjs-dropdown-multiselect.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="~/Content/Service/CompanyService.js"></script>
+    <script src="~/Content/Controller/CompanyCriteriaManagecontroller.js"></script>
+
+    @*<script src=" ~/Content/Module.js"></script>
+
+        <script src="~/Content/dirPagination.js"></script>*@
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="background-color:white;" ng-controller="myCntrlcompcriteria">
+        <br />
+
+        <form class="form-inline">
+            <h2><center>All company Criteria Detail</center></h2>
+            <div class="form-group" style="float:left;">
+                <b>Company Name : </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.CompanyName" />
+                <b>Branch Name : </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.BranchName" />
+                <b>Minimum CGPA : </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.Min_CGPA" />
+
+
+            </div>
+
+            <div style="clear:both;"></div>
+        </form>
+        <br />
+
+        <table cellpadding="12" class="table table-bordered table-hover table-striped">
+            <tr class="success">
+                <th style="cursor: pointer;" ng-click="sort('CompanyName')"><b>Company Name</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Brannchname')"><b>Branch Name</b></th>
+
+                <th style="cursor: pointer;" ng-click="sort('Min_CGPA')"><b>Min_CGPA</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Min_Spi')"><b>Min_Spi</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Max_Backlogs')"><b>Max_Backlogs</b></th>
+                <th style="cursor: pointer;" ng-click="sort('std10PR')"><b>STD 10%</b></th>
+                <th style="cursor: pointer;" ng-click="sort('std12PR')"><b>STD 12%</b></th>
+
+            </tr>
+            @*<tr dir-paginate="employee in filtered =(employees | orderBy:sortKey:reverse|filter:search:strict|itemsPerPage:2)"*@
+            <tr dir-paginate="employee in employees | orderBy:sortKey:reverse|filter:search:strict|itemsPerPage:5"
+                ng-model="search">
+                <td>
+                    {{employee.CompanyName}}
+                </td>
+                <td>
+                    {{employee.BranchName}}
+                </td>
+                <td>
+                    {{employee.Min_CGPA}}
+                </td>
+                <td>
+                    {{employee.Min_Spi}}
+                </td>
+                <td>
+                    {{employee.Max_Backlogs}}
+                </td>
+                <td>
+                    {{employee.std10PR}}
+                </td>
+                <td>
+                    {{employee.std12PR}}
+                </td>
+
+            </tr>
+            <b style="color: #5bc0de;">Total Records </b>:
+
+            <b>{{ (employees | filter: search:strict).length }}of</b>
+
+
+            @*<b>{{filtered.length}}  all </b>*@
+            <b>{{employees.length}}</b>
+        </table>
+
+        <dir-pagination-controls max-size="10"
+                                 direction-links="true"
+                                 boundary-links="true">
+        </dir-pagination-controls>
+
+
+</body>
+</html>

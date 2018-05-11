@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Company Info";
+}
+
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="~/Content/angularjs-dropdown-multiselect.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="~/Content/Service/CompanyService.js"></script>
+    <script src="~/Content/Controller/CompanyController.js"></script>
+
+    @*<script src="~/Content/Module.js"></script>
+
+        <script src="~/Content/dirPagination.js"></script>*@
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="background-color:white;" ng-controller="myCntrl">
+        <br />
+
+        <form class="form-inline">
+            <div class="form-group" style="float:left;">
+                <b>Company Name : </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.CompanyName" />
+                <b>BranchName : </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.BranchName" />
+
+
+
+            </div>
+            <div style="float:right;padding-right:75px;">
+                <input type="button" class="btn btn-success btn-lg" ng-click="AddCompany();"
+                       value="Add Company" style="margin-left: 15px;" data-toggle="modal" data-target="#myModal" />
+            </div>
+            <div style="clear:both;"></div>
+        </form>
+        <br />
+
+        <table cellpadding="12" class="table table-bordered table-hover table-striped">
+            <tr class="success">
+                <th style="cursor: pointer;" ng-click="sort('CompanyName')"><b>Company Name</b></th>
+                
+                <th style="cursor: pointer;" ng-click="sort('BranchName')"><b>Branch</b></th>
+                <th style="cursor: pointer;" ng-click="sort('WebsiteName')"><b>Website</b></th>
+                <th><b>Actions</b></th>
+            </tr>
+            @*<tr dir-paginate="employee in filtered =(employees | orderBy:sortKey:reverse|filter:search:strict|itemsPerPage:2)"*@
+            <tr dir-paginate="employee in employees | orderBy:sortKey:reverse|filter:search:strict|itemsPerPage:5"
+                ng-model="search">
+                <td>
+                    {{employee.CompanyName}}
+                </td>
+               
+                <td>
+                    {{employee.BranchName}}
+                </td>
+                <td>
+                    <a href="http://{{employee.WebsiteName}}" target="_blank"> {{employee.WebsiteName}}</a>
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" ng-click="editCompany(employee)" href="">Edit</a>
+                    <a class="btn btn-info btn-sm" ng-click="manageCriteria(employee.CompanyId)" >manageCriteria</a>
+                </td>
+            </tr>
+            <b style="color: #5bc0de;">Total Records </b>:
+
+            <b>{{ (employees | filter: search:strict).length }}of</b>
+
+
+            @*<b>{{filtered.length}}  all </b>*@
+            <b>{{employees.length}}</b>
+        </table>
+
+        <dir-pagination-controls max-size="10"
+                                 direction-links="true"
+                                 boundary-links="true">
+        </dir-pagination-controls>
+
+
+        <!-- Add update dialog-->
+        <form name="myForm">
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{Action}} Company Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Compnay Name :</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8">
+                                            <input type="text" class="form-control" data-modal="modal" name="companyName" ng-model="companyName" placeholder="Company's Name" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Compnay Domain :</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8">
+                                            <input type="text" class="form-control" data-modal="modal" ng-model="companyDomain" placeholder="Company's Domain" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Compnay Address :</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8">
+                                            <input type="text" class="form-control" data-modal="modal" ng-model="Address" placeholder="Company's Location" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Company Purpose:</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8" ng-required="true">
+                                            <input type="checkbox" title="Is Traing Provide" data-modal="modal" ng-model="IsTrainingProvide" />
+                                            Is Traing Provide
+                                            <input type="checkbox" title="Is Placement Provide" data-modal="modal" ng-model="IsPlacementProvide" />
+                                            Is Placement Provide
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Compnay web :</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8">
+                                            <input type="text" class="form-control" data-modal="modal" ng-model="companyWebsite" placeholder="Company's Web" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+                                            <b>*Branch:</b>
+                                        </div>
+                                        <div class="col-md-4 col-sm-8">
+                                            <div ng-dropdown-multiselect=""
+                                                 options="example13data"
+                                                 selected-model="selectedBracnhModel"
+                                                 extra-settings="multiBranchSelect"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-2" style="margin-left: 20px; color: #5bc0de;">
+
+                                            </div>
+                                            <div class="col-md-8 col-sm-8">
+                                                <span ng-show="myForm.companyName.$error.required">Company Name is required.</span>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="button" class="btnAdd btn btn-success" value="Save"
+                                       ng-disabled="myForm.$invalid"
+                                       ng-click="AddUpdateCompanyInfo()" data-dismiss="modal" />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- ADd update dialog end-->
+        <!-- Notification alert box show-->
+        <div id="alertModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- dialog body -->
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        {{msg}}
+                    </div>
+                    <!-- dialog buttons -->
+                    <div class="modal-footer">
+                        <button type="button" ng-click="alertmsg()" class="btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification alert hide-->
+
+    </div>
+</body>
+</html>

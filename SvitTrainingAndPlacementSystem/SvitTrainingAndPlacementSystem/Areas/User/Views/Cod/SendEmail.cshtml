@@ -1,0 +1,73 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+@using SvitTrainingAndPlacementSystem.Areas.User.Models;
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+@model CordinatorModel
+@{
+    ViewBag.Title = "SendEmail";
+    
+}
+<head>
+    <title></title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+
+<div class="container" style="background-color:white;">
+    <h2><center>SEND EMAIL TO STUDENT</center></h2>
+    @using (Html.BeginForm("SendEmail", "Cod", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+    {
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    @Html.RenderMessages()
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Email</td>
+                <td>@Html.TextAreaFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>Branchid</td>
+                <td>
+                    @Html.DropDownListFor(m => m.BranchId, Model.branchselectlist)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Attachment
+                </td>
+                <td>
+                 
+                    <input type="file" name="fileUploader" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+
+        </table>
+
+    }
+
+</div>
+

@@ -1,0 +1,165 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+    <script src="~/Content/angular1.2.18.min.js"></script>
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>*@
+    <script src="~/Content/Module.js"></script>
+    @*<script src="~/Content/Service.js"></script>
+        <script src="~/Content/Controller.js"></script>*@
+    @*<script src="~/Content/angular-scenario.js"></script>*@
+    <script src="~/Content/dirPagination.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Template/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Template/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/Template/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="~/Template/js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Template/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Svit Training and Palcement</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-nav navbar-right">
+               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle avatar" 
+                       data-toggle="dropdown"><i class="fa fa-tasks"></i>Menu</a>
+                 
+
+                    @if (SvitTrainingAndPlacementSystem.helper.ProjectSession.intUserType == 1)
+                    {
+
+                    <ul class="dropdown-menu">
+                       
+                        <li class="m_2"><a href="~/User/Placedstudent/PlacedStudentList"><i class="fa fa-dashboard fa-fw nav_icon"></i> Placed Student</a></li>
+                        <li class="m_2">
+                            <a href="~/User/CompanyInfo">
+                                <i class="fa fa-file"></i> Company
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-menu-header text-center">
+                            <strong>ACTIVITY</strong>
+                        </li>
+                        <li class="m_2"><a href="~/User/Student/StudentList"><i class="fa fa-user"></i> Student</a></li>
+                        
+                        <li class="m_2"><a href="~/User/Cod/CoordinatorList"><i class="fa fa-user"></i> Co-ordinators</a></li>
+                        <li class="m_2"><a href="~/User/CompanyCriteriaManage/Index"><i class="fa fa-user"></i> Company Criteria</a></li>
+                       
+
+                        <li class="dropdown-menu-header text-center">
+                            <strong>PROFILE</strong>
+                        </li>
+                        
+                        <li class="m_2">
+                            <a href="#"></a>
+                            <a href="~/Home/First"
+                               class="logout">
+                                <i class="fa fa-lock"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                    }
+
+                    @if (SvitTrainingAndPlacementSystem.helper.ProjectSession.intUserType == 2)
+                    {
+
+                        <ul class="dropdown-menu">
+                            
+                            <li class="dropdown-menu-header text-center">
+                                <strong>ACTIVITY</strong>
+                            </li>
+                            <li class="m_2"><a href="~/User/Student/BulkStudentCSV"><i class="fa fa-user"></i> Student</a></li>
+                            <li class="m_2"><a href="~/User/Student/StudentList"><i class="fa fa-user"></i> Student List</a></li>
+                            <li class="m_2"><a href="~/User/Cod/Aptitude_Test"><i class="fa fa-user"></i>Creat Appitude Test</a></li>
+                            <li class="m_2"><a href="~/User/Cod/AptitudeTestList"><i class="fa fa-user"></i> Appitude Test List</a></li>
+                            <li class="m_2"><a href="~/User/CompanyCriteriaManage/Index"><i class="fa fa-user"></i> Company Criteria</a></li>
+                            <li class="m_2"><a href="~/User/Cod/SendEmail"><i class="fa fa-user"></i> Email Send</a></li>
+                            <li class="m_2"><a href="~/User/Placedstudent/PlacedStudentList"><i class="fa fa-user"></i> Placed Student List</a></li>
+
+
+                            <li class="dropdown-menu-header text-center">
+                                <strong>PROFILE</strong>
+                            </li>
+                           
+                            <li class="m_2">
+                                <a href="#"></a>
+                                <a href="~/Home/First"
+                                   class="logout">
+                                    <i class="fa fa-lock"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                    @if (SvitTrainingAndPlacementSystem.helper.ProjectSession.intUserType == 3)
+                    {
+
+                        <ul class="dropdown-menu">
+                           
+                            <li class="m_2"><a href="~/User/Placedstudent/PlacedStudentList"><i class="fa fa-dashboard fa-fw nav_icon"></i> Placed student list</a></li>
+                            <li class="m_2">
+                               
+                                
+                            </li>
+                           
+                            
+                            <li class="dropdown-menu-header text-center">
+                                <strong>ACTIVITY</strong>
+                            </li>
+                            <li class="m_2"><a href="~/User/Cod/AptitudeTestList"><i class="fa fa-user"></i> Appitude Test List</a></li>
+                            <li class="m_2"><a href="~/User/studentcompanyinfo/Index"><i class="fa fa-user"></i> company Detail</a></li>
+                            <li class="m_2"><a href="~/User/CompanyCriteriaManage/Index"><i class="fa fa-user"></i> Company Criteria</a></li>
+                            <li class="dropdown-menu-header text-center">
+                                <strong>PROFILE</strong>
+                            </li>
+                            
+                            <li class="m_2">
+                                <a href="#"></a>
+                                <a href="~/Home/First"
+                                   class="logout">
+                                    <i class="fa fa-lock"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                </li>
+            </ul>
+
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper" style="margin:0px; background:url('../../Template/images/background.jpg') center top repeat-x rgb(196, 212, 238)">
+
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Nav CSS -->
+    <link href="~/Template/css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Template/js/metisMenu.min.js"></script>
+    <script src="~/Template/js/custom.js"></script>
+</body>
+</html>

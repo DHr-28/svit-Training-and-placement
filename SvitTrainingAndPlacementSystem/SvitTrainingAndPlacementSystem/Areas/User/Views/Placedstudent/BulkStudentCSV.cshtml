@@ -1,0 +1,69 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+
+@{
+    ViewBag.Title = "Bulk Upload Student CSV";
+}
+
+
+
+
+
+
+
+
+<div class="container" style="background-color:white;" ng-controller="myCntrl">
+    <br />
+    <h1><Center>Upload Bulk Student CSV</Center></h1>
+
+
+    @using (Html.BeginForm("BulkStudentCSV", "Placedstudent", FormMethod.Post, new
+    {
+        enctype = "multipart/form-data",
+        id = "frmBulkUserRegistration",
+        @class = "form-inline"
+    }))
+    {
+        <div class="form-group">
+            @Html.RenderMessages()
+            <br />
+            <table>
+                
+                <b>Browse File: : </b>
+                <br />
+                <input type="file" id="file1" name="bulkuploads" />
+                <br />
+            </table>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success btn-lg" onclick="return testvalid();"
+                   value="Submit" />
+        </div>
+    }
+    <br />
+
+
+
+</div>
+
+
+<script>
+
+    function testvalid() {
+        if ($('#file1').val().length == 0)
+        {
+            alert('Please select file to upload.');
+            return false;
+        }
+        if ($('#file1').val().toLowerCase().lastIndexOf('.csv') == -1)
+        {
+            alert('Please upload file in CSV format only.');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+</script>

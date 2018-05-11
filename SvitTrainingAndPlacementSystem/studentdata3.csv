@@ -1,0 +1,7 @@
+Enrollment,FirstName,LastName,BranchID,Email,PhoneNumber,Residency,sem1,sem2,sem3,sem4,sem5,sem6,CGPA,std10PR,std12PR
+130410107013,Nikhil,Rana,2,Nikhil@gmail.com,1234567890,Anand,6.5,6.5,6.5,6.5,6.5,6.5,6.5,53.65,88.25
+130410107014,Kosha,Shah,4,Kosha@gmail.com,3216549875,Anand,6.5,6.7,7,6,6.5,6.5,6.8,88.25,75.22
+130410107015,Janki,Prajapati,3,Janki@gmail.com,6285361485,Vadodra,7.4,7.6,7,6.5,6.12,6.25,7.1,75.22,65.58
+130410107016,Vedant,Mistry,7,Mistry@gmail.com,7536215495,Patlad,6.5,5.5,6.5,7,6.12,6.6,6.45,58.65,74.22
+130410107017,Vishal,Mistry,6,Vishal@gmail.com,9456213845,Vasad,6.5,7,6.45,6.5,6.89,6.52,6.7,85.65,85.22
+130410107018,Jainesh,Patel,5,Jainesh@gmail.com,9745621589,Vasad,6.6,6.8,7.5,6.5,6.4,6.6,6.76,70.25,55.25

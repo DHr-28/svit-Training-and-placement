@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SvitTrainingPlacementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aptitude_Test">
+    <Key>
+      <PropertyRef Name="Aptitude_Test_id" />
+    </Key>
+    <Property Name="Aptitude_Test_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Branch_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyBranch">
+    <Key>
+      <PropertyRef Name="CompanyBranchId" />
+    </Key>
+    <Property Name="CompanyBranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Companycriteria">
+    <Key>
+      <PropertyRef Name="Companycriteriaid" />
+    </Key>
+    <Property Name="Companycriteriaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Min_CGPA" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Min_Spi" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Max_Backlogs" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="std10PR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="std12PR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Branchname" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CompanyInfo">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WebsiteName" Type="varchar" MaxLength="50" />
+    <Property Name="Domain" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="Address" Type="varchar" MaxLength="5000" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="IsTrainingProvide" Type="bit" />
+    <Property Name="IsPlacementProvide" Type="bit" />
+  </EntityType>
+  <EntityType Name="coordinator">
+    <Key>
+      <PropertyRef Name="co-ordinatorid" />
+    </Key>
+    <Property Name="co-ordinatorid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="bigint" />
+    <Property Name="Residency" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Placedstudent">
+    <Key>
+      <PropertyRef Name="intstudentid" />
+    </Key>
+    <Property Name="intstudentid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="companyid" Type="int" Nullable="false" />
+    <Property Name="Branchid" Type="int" Nullable="false" />
+    <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="intStudentId" />
+    </Key>
+    <Property Name="intStudentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="bigint" />
+    <Property Name="Residency" Type="varchar" MaxLength="50" />
+    <Property Name="CGPA" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem1" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem2" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem3" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem4" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem5" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="sem6" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="std10PR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="std12PR" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="intUserid" />
+    </Key>
+    <Property Name="intUserid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strPassword" Type="nvarchar" MaxLength="200" />
+    <Property Name="strFirstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="strLastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="strEmail" Type="varchar" MaxLength="50" />
+    <Property Name="intGender" Type="int" />
+    <Property Name="strResidency" Type="varchar" MaxLength="200" />
+    <Property Name="intUserType" Type="int" />
+    <Property Name="intCreatedby" Type="int" />
+    <Property Name="datCreateddate" Type="datetime" />
+    <Property Name="intModifiedby" Type="int" />
+    <Property Name="datModifieddate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_CompanyBranch_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="CompanyBranch">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyBranch_CompanyInfo">
+    <End Role="CompanyInfo" Type="Self.CompanyInfo" Multiplicity="1" />
+    <End Role="CompanyBranch" Type="Self.CompanyBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyInfo">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyBranch">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CompanyInfoselectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SvitTrainingPlacementModelStoreContainer">
+    <EntitySet Name="Aptitude_Test" EntityType="Self.Aptitude_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyBranch" EntityType="Self.CompanyBranch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companycriteria" EntityType="Self.Companycriteria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="coordinator" EntityType="Self.coordinator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Placedstudent" EntityType="Self.Placedstudent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CompanyBranch_Branch" Association="Self.FK_CompanyBranch_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyBranch_CompanyInfo" Association="Self.FK_CompanyBranch_CompanyInfo">
+      <End Role="CompanyInfo" EntitySet="CompanyInfo" />
+      <End Role="CompanyBranch" EntitySet="CompanyBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Branch" Association="Self.FK_Student_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

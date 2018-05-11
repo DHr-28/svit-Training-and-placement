@@ -1,0 +1,109 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+@using SvitTrainingAndPlacementSystem.Areas.User.Models;
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+
+@model CordinatorModel
+@{
+    ViewBag.Title = "CreateCordinator";
+}
+
+
+
+<html>
+<head>
+    <title></title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 2px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 17px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="background-color:white;">
+        <h2><center>COORDINATOR DETAIL</center></h2>
+        @using (Html.BeginForm("CreateCordinator", "Cod", FormMethod.Post))
+    {
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    @Html.RenderMessages()
+                </td>
+            </tr>
+            <tr>
+                <td>Coordinator Name</td>
+                <td>@Html.TextBoxFor(m => m.FirstName)
+                    @Html.ValidationMessageFor(m => m.FirstName)               
+                </td>
+
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Html.TextBoxFor(m => m.LastName)
+                    @Html.ValidationMessageFor(m => m.LastName)  
+                </td>
+            </tr>
+            <tr>
+                <td> <label>Gender</label> </td>
+                <td>
+                    @Html.RadioButtonFor(p => p.gender, "male")Male
+                    @Html.RadioButtonFor(p => p.gender, "Female")Female
+                      @Html.ValidationMessageFor(p => p.gender)
+                </td>
+
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)  
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Contact</td>
+                <td>@Html.TextBoxFor(m => m.PhoneNumber)
+                    @Html.ValidationMessageFor(m => m.PhoneNumber)  
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>@Html.TextAreaFor(m => m.Residency)
+                    @Html.ValidationMessageFor(m => m.Residency)  
+                </td>
+            </tr>
+              
+           
+
+            <tr>
+                <td>Branch</td>
+               <td>
+                   @Html.DropDownListFor(m=>m.BranchId,Model.branchselectlist)
+               </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+
+        </table>
+
+    }
+        
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@using SvitTrainingAndPlacementSystem.Infrastructure;
+@using SvitTrainingAndPlacementSystem.Areas.User.Models;
+
+@model CompanyCriteriaModel
+@{
+    ViewBag.Title = "CreateCordinator";
+
+}
+
+
+<html>
+<head>
+    <title></title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="background-color:white;">
+        <h2><Center>Company Criteria manage</Center> </h2>
+        @using (Html.BeginForm("CompanyCriteriaManage", "CompanyInfo", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td colspan="2">
+                        @Html.RenderMessages()
+                        @Html.HiddenFor(m=>m.CompanyId)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Minimum Min_CGPA </td>
+                    <td>@Html.TextBoxFor(m => m.Min_CGPA)</td>
+
+                </tr>
+                <tr>
+                    <td>Min SPI</td>
+                    <td>@Html.TextBoxFor(m => m.Min_Spi)</td>
+                </tr>
+                <tr>
+                    <td>Max backlog</td>
+                    <td>@Html.TextBoxFor(m => m.Max_Backlogs)</td>
+                </tr>
+                <tr>
+                    <td>STD 10 PR</td>
+                    <td>@Html.TextBoxFor(m => m.std10PR)</td>
+                </tr>
+                <tr>
+                    <td>STD 12 PR</td>
+                    <td>@Html.TextBoxFor(m => m.std12PR)</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+
+            </table>
+
+        }
+
+    </div>
+
+</body>
+</html>

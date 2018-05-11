@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Student Info";
+}
+
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="~/Content/angularjs-dropdown-multiselect.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="~/Content/Controller/Placedstudentcontroller.js"></script>
+    <script src="~/Content/Controller/student.js"></script>
+    @*<script src="~/Content/Module.js"></script>
+
+        <script src="~/Content/dirPagination.js"></script>*@
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="background-color:white;" ng-controller="placedstudentctrl">
+        <br />
+
+        <form class="form-inline">
+            <div class="form-group" style="float:left;">
+                
+                <b>Enrollment: </b>
+                <input type="text" placeholder="Search" class="form-control" ng-model="search.Enrollment" />
+            </div>
+
+            <div style="clear:both;"></div>
+        </form>
+        <br />
+
+        <table cellpadding="12" class="table table-bordered table-hover table-striped">
+            <tr class="success">
+                <th style="cursor: pointer;" ng-click="sort('FirstName')"><b>FirstName</b></th>
+                <th style="cursor: pointer;" ng-click="sort('LastName')"><b>LastName</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Enrollment')"><b>Enrollment</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Company Name')"><b>Company Name</b></th>
+                <th style="cursor: pointer;" ng-click="sort('Branch name')"><b>BranchName</b></th>
+                
+
+                
+            </tr>
+            <tr dir-paginate="employee in studentdata | orderBy:sortKey:reverse|filter:search:strict|itemsPerPage:4"
+                ng-model="search">
+                <td>
+                    {{employee.FirstName}}
+                </td>
+                <td>
+                    {{employee.LastName}}
+                </td>
+                <td>
+                    {{employee.Enrollment}}
+                </td>
+                <td>
+                    {{employee.CompanyName}}
+                </td>
+                <td>
+                    {{employee.BranchName}}
+                </td>
+
+               
+            </tr>
+            <b style="color: #5bc0de;">Total Records </b>:
+
+            <b>{{ (employees | filter: search:strict).length }}of</b>
+
+
+            @*<b>{{filtered.length}}  all </b>*@
+            <b>{{employees.length}}</b>
+        </table>
+
+        <dir-pagination-controls max-size="10"
+                                 direction-links="true"
+                                 boundary-links="true">
+        </dir-pagination-controls>
+
+
+    </div>
+</body>
+</html>

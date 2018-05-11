@@ -1,0 +1,7 @@
+Enrollment,FirstName,LastName,BranchID,Email,PhoneNumber,Residency,sem1,sem2,sem3,sem4,sem5,sem6,CGPA,std10PR,std12PR
+130410107011 ,Rajat,Patel,7,rajat@gmail.com,4258672536 ,Anand,6.5,6.5,6.5,6.5,6.5,6.5,6.5,65.52,85.78
+130410107012 ,Dhara,patel,7,Dhara@gmail.com,4352195756 ,Anand,6.5,6.7,7,6,6.5,6.5,6.8,85.56,58.41
+130410107013 ,Nishit,Patel,2,Nishit@gmail.com,2345862458 ,Vadodra,7.4,7.6,7,6.5,6.12,6.25,7.1,88.26,68.62
+130410107014 ,Amay,Rana,1,Amay@gmail.com,4523698514 ,Patlad,6.5,5.5,6.5,7,6.12,6.6,6.45,77.45,69.58
+130410107015 ,Deep,Barot,4,Deep@gmail.com,6521463578 ,Vasad,6.5,7,6.45,6.5,6.89,6.52,6.7,66.36,85.58
+130410107016 ,Dhyay,Patel,3,jayan.130410107068@gmail.com,4512368754 ,Vasad,6.6,6.8,7.5,6.5,6.4,6.6,6.76,56.85,60.45
